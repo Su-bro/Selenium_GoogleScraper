@@ -75,17 +75,47 @@ def insult_review(): #리뷰데이터 db에 저장
     query = sqlalchemy.insert(table)
     #  len(df)
     for i in df.index:
-        values_list.append({'content':df.loc[i,'content'].replace('\"',''), 'created_at':df.loc[i,'reg_time'], 'total_score':df.loc[i,'score'], 'cafe_id':df.loc[i,'store_id'], 'user_id':1})
+        values_list.append({'content':df.loc[i,'content'].replace('\"',''), 'created_at':str(df.loc[i,'reg_time']), 'total_score':df.loc[i,'score'], 'cafe_id':df.loc[i,'store_id'], 'user_id':1})
         if(i>1 and i%100000 == 0): 
             engine.execute(query,values_list)
-            values_list = []        
+            values_list = []       
 
     engine.execute(query,values_list)
+    
+def insult_bhour(): 
+    #DATA 경로
+    DATA_DIR = "../datas"
+    BHOUR_FILE= os.path.join(DATA_DIR, "bhour.pkl")
+    df = pd.read_pickle(BHOUR_FILE)
+    values_list = []
+    metadata = sqlalchemy.MetaData()
+    table = sqlalchemy.Table('bhour', metadata,autoload=True,autoload_with=engine)
+    query = sqlalchemy.insert(table)
+    for i in df.index:
+        values_list.append({'cafe_id':int(df.loc[i,'cafe_id']), 'type':int(df.loc[i,'type']), 
+                            'week_type':int(df.loc[i,'week_type']), 'start_time':df.loc[i,'start_time'], 
+                            'end_time':df.loc[i,'end_time'], 'etc':df.loc[i,'etc'],'sun':int(df.loc[i,'sun'].astype(int)),
+                            'mon':int(df.loc[i,'mon']),'tue':int(df.loc[i,'tue']),'fri':int(df.loc[i,'fri']),'sat':int(df.loc[i,'sat'].astype(int))})    
+            
+    engine.execute(query,values_list)
 
-        
-# insult_cafe()
-# insult_review()
 
-
-#%%
+def insult_menu(): 
+    #DATA 경로
+    DATA_DIR = "../datas"
+    MENU_FILE= os.path.join(DATA_DIR, "menu.pkl")
+    df = pd.read_pickle(MENU_FILE)
+    values_list = []
+    metadata = sqlalchemy.MetaData()
+    table = sqlalchemy.Table('menu', metadata,autoload=True,autoload_with=engine)
+    query = sqlalchemy.insert(table)
+    for i in df.index:
+        values_list.append({'cafe_id':int(df.loc[i,'store']), 
+                            'name':df.loc[i,'menu_name'],
+                            'price':int(df.loc[i,'price'])})    
+        # if(i>1 and i%1000 == 0): 
+        #     engine.execute(query,values_list)
+        #     values_list = []      
+            
+    engine.execute(query,values_list)
 
