@@ -39,7 +39,8 @@ def merge_rivews():
 
 df = pd.read_pickle(MERGE_FILE)
 #%%
-for i in range(0,1000):
+val = []
+for i in range(0,len(df)):
     st = df.loc[i,'reviews']
     # print(st)
     taste = str(st).count('맛있')
@@ -118,8 +119,9 @@ for i in range(0,1000):
     nice += str(st).count('응대')
     nice -= str(st).count('불친')
     
-    lis = {'id':i, 'taste':taste, 'view':view, 'mood':mood, 'wide':wide, 'study':study, 'nice':nice} 
-    
-    print(lis)
+    lis = {'cafe_id':int(df.loc[i,'id']), 'taste':int(taste), 'view':int(view), 
+           'mood':int(mood), 'wide':int(wide), 'study':int(study), 'nice':int(nice)} 
+    val.append(lis)
+    # print(lis)
 
 #%%
