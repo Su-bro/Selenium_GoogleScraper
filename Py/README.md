@@ -1,2 +1,30 @@
 # 필요한 라이브러리 설치
 pip install -r requirements.txt
+
+info
+dataclasses==0.6
+Flask==2.0.1
+Flask-RESTful==0.3.9
+greenlet==1.1.2
+importlib-metadata==4.8.1
+itsdangerous==2.0.1
+Jinja2==3.0.1
+MarkupSafe==2.0.1
+mysql-connector-python==8.0.26
+mysql-connector==2.2.9
+numpy==1.19.5
+pandas==1.1.5
+protobuf==3.18.0
+python-dateutil==2.8.2
+pytz==2021.3
+six==1.16.0
+SQLAlchemy==1.4.23
+typing-extensions==3.10.0.2
+Werkzeug==2.0.1
+zipp==3.6.0
+konlpy==0.5.2
+pypi==2.1
+selenium==3.141.0
+tweepy==3.9.0
+unicodecsv==0.14.1
+mypy-extensions==0.4.3
