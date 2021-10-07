@@ -170,7 +170,7 @@ for i in range(0,len(df)):
     if(a == "q"): break
 
 #%% 이미지 url 스크래핑
-for i in range(21897,len(df)):
+for i in range(0,len(df)):
     address = df.loc[i,'address']
     search = address + ' ' + df.loc[i,'store_name']
     print("||==",i,"번째 카페 :"+" "+search,"==||")
