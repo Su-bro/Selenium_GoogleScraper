@@ -8,7 +8,7 @@ import os
 
 db = {
     'user': 'admin',	        # 1)
-    'password': '',		# 2)
+    'password': 'zas!sdaqe',		# 2)
     'host': 'cafein.cckcnhsswc6w.ap-northeast-2.rds.amazonaws.com',    # 3)
     'port': 3306,			# 4)
     'database': 'cafein'		# 5)
