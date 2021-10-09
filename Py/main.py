@@ -19,8 +19,8 @@ def shutdown_session(exception=None):
     db_session.remove()
     print("sutdown")
 
-cafeId=2
-@app.route('/flask/word')
+
+@app.route('/word')
 def getwordcount():
     cafeId = request.args.get('cafeid')
     print('getword')
